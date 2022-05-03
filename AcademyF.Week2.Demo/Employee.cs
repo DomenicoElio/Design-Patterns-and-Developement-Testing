@@ -10,10 +10,14 @@ namespace AcademyF.Week2.Demo
     {
         public string Company { get; set; }
 
+        public DateTime DateOfEmployment { get; set; }
+
         public double CalculateSalary()
         {
             return 1000 * DateOfBirth.Year;
         }
+
+        public double CalculateSeniority() { return  DateOfEmployment.Year + DateTime.Now.Year }
 
         public override string ToString()
         {

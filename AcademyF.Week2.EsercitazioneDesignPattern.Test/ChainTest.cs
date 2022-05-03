@@ -190,5 +190,40 @@ namespace AcademyF.Week2.EsercitazioneDesignPattern.Test
             //Verifico che il premio sia uguale a 300
             Assert.Equal(300, premio);
         }
+
+        [Fact]
+        public void ShouldHaveBonusBasedOnSeniority()
+        {
+            //My Employee Deserves Access to Bonuses based on his seniority
+
+            //ARRANGE
+            //creating the necessary employee to test the seniority
+            Employee employee = new Employee()
+            {
+                DateOfBirth = new DateTime(1980, 1, 1),
+                DateOfEmployment = new DateTime(2000, 1, 1),
+                ProductivityRate = 80,
+                AbsenceRate = 70
+            };
+
+            //Setting a variable to compare to
+            int Y = 40;
+
+            //Genero la catena di responsabilità
+            IHandler absenceHandler = new AbsenceHandler(Y, Z);
+            IHandler productiviryHandler = new ProductivityHandler(Y, W);
+
+            absenceHandler.SetNext(productiviryHandler);
+
+            //ACT 
+
+            //Chiamata al metodo che gestisce la richiesta per l'impiegato creato
+            double premio = absenceHandler.HandleRequest(employee);
+
+            //ASSERT
+
+            //Verifico che il premio sia uguale a 300
+            Assert.Equal(300, premio);
+        }
     }
 }

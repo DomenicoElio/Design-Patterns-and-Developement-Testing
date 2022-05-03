@@ -81,11 +81,13 @@ namespace AcademyF.Week2.Demo
             Person employee = new Employee()
             {
                 Company = "Avanade",
+                DateOfEmployment = new DateTime(2000, 4, 5) //if employee has been employed for more then 40 years - display message saying you waulify for a benefit
                 DateOfBirth= new DateTime(1980, 4, 5)
             };
             //Person employee = new Person();
             var emp = employee as Employee; //CAST da Person a Employee
             Console.WriteLine(emp.CalculateSalary());
+            Console.WriteLine(emp.CalculateSeniority()); //implementing function to calculate seniory, based on tests
             Console.WriteLine(employee);
             
         }
